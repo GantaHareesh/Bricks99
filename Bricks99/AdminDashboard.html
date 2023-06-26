@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Add custom CSS -->
+  <style>
+    /* Adjust sidebar style */
+    .sidebar {
+      background-color: darkkhaki;
+      padding: 20px;
+      height: 100vh;
+    }
+
+    /* Adjust main content style */
+    .content {
+      padding: 20px;
+    }
+
+    /* Adjust filter dropdown style */
+    .filter-dropdown {
+      margin-bottom: 20px;
+      background-color:brown;
+    }
+
+    /* Adjust card style */
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="www.google.com" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9 content">
+        <h2>Welcome to the Admin Dashboard</h2>
+        <div class="filter-dropdown">
+          <label for="filter">Filter:</label>
+          <select id="filter" class="form-control">
+            <option value="all">All </option>
+            <option value="approved">Approved</option>
+
+            <option value="pending">Pending</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text">500</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Active Users</h5>
+                <p class="card-text">300</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Inactive Users</h5>
+                <p class="card-text">200</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Add custom JavaScript -->
+  <script>
+    document.getElementById('filter').addEventListener('change', function () {
+      var filterValue = this.value;
+
+      if (filterValue === 'pending') {
+        window.open('PendingSellersList.html', '_blank');
+      }
+
+      if (filterValue === 'approved') {
+        window.open('ApprovedSellers.html', '_blank');
+      }
+
+    });
+  </script>
+</body>
+
+</html>
