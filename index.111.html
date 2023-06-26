@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1 FHPL</title>
+    <link href="stylesheet" rel="style.css">
+    <title>drop-down list</title>
+    <link rel="shortcut icon" type="image.png" href="fhpl2.png">
+    <style>
+        body{
+            background-image: url(https://i.ytimg.com/vi/J5ZfV43T76o/maxresdefault.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            
+        }
+    </style>
+</head>
+<body text="pink">
+       <h1>Asset Details</h1>
+    <div class="inputBox">
+        <span>* Asset Id :</span>
+        <input type="text" required="required">
+    </div>
+    <p>
+        <span>* Make :</span> <ul>
+        <form>
+            <select name="Make">
+                <option value="-select-">-select-</option>
+                <option value="HP">HP</option>
+                <option value="Dell">Dell</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="Acer">Acer</option>
+                <option value="Others">Others</option>
+            </select>
+        </form></ul>
+    </p>   
+        <span>* If Others :</span>
+        <input type="text" required="required">
+    
+    <p><div class="inputBox">
+        <span>* Model :</span>
+        <input type="text" required="required">
+    </div></p>
+    <p><div class="inputBox">
+        <span>* Serial Number :</span>
+        <input type="text" required="required">
+    </div></p>
+    <p><div class="inputBox">
+        <span>* Host Name : </span>
+        <input type="text" required="required">
+    </div></p>
+    <h2> Internal Configaration</h2>
+    
+    <h4>*Memory</h4>    
+        <span>* Size :</span>
+        <p><ul><form>
+            <select name="Size">
+                <option value="-select-">-select-</option>
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="!6Gb">16GB</option>
+                <option value="32GB">32GB</option>
+             </select>
+         </form></ul></p>    
+         <p><span>* Type :</span><ul>
+         <form>
+             <select name="Type">
+                 <option value="-select-">-select-</option>
+                 <option value="DDR3">DDR3</option>
+                 <option value="DDR4">DDR4</option>
+                 <option value="DDR5">DDR5</option>
+             </select>
+          </form></ul></p>    
+    <h4><b>*Storage</b></h4>
+    <p><span>* Type :</span><ul>
+        <form>
+            <select name="Type">
+                <option value="-select-">-select-</option>
+                <option value="HDD">HDD</option>
+                <option value="SSD">SSD</option>
+                
+            </select>
+         </form></ul></p>
+         <p><span>* Cpacity :</span><ul>
+            <form>
+                <select name="Type">
+                    <option value="-select-">-select-</option>
+                    <option value="128Gb">128GB</option>
+                    <option value="256GB">256GB</option>
+                    <option value="512Gb">512GB</option>
+                    <option value="1TB">1TB</option>
+                    <option value="2TB">2Tb</option>
+                </select>
+             </form></ul></p>
+    <p><div class="inputBox">
+        <span>* Device MAC :</span>
+        <input type="text" required="required">
+    </div></p>    
+
+    <h2> Operating System Details</h2>
+    
+    <p><span>* Type of OS :</span><ul>
+        <form>
+            <select name="Type">
+                <option value="-select-">-select-</option>
+                <option value="Windows">Windows</option>
+                <option value="Linux Base">Linux Base</option>
+         </select>
+         </form></ul></p>
+         <p><span>* Name of OS :</span><ul>
+            <form>
+                <select name="Type">
+                    <option value="-select-">-select-</option>
+                    <option value="Windows 10">Windows 10</option>
+                    <option value="Windows 11">Windows 11</option>
+                    <option value="others">Others</option>
+             </select>
+             </form></ul></p>
+    <p><div class="inputBox">
+        <span>* OS Build Version : </span>
+        <input type="text" required="required">
+    </div></p>    
+    <h2> Purchase  Details</h2>
+    <p><div class="inputBox">
+        <span>* Vendor Name : </span>
+        <input type="text" required="required">
+    </div></p>
+    <p><div class="inputBox">
+        <span>* Purchase Date : </span>
+        <input type="date">
+    </div></p>
+    <p><div class="inputBox">
+        <span>* Po Number / Invoice Number : </span>
+        <input type="text" required="required">
+    </div></p>    
+    <h2> Warranty  Details</h2>
+    <p><div class="inputBox">
+        <span>* Start Date: </span>
+        <input type="date">
+    </div></p>
+    <p><div class="inputBox">
+        <span>* End Date: </span>
+        <input type="date">
+    </div></p>    
+    <h2> Allocation  Details</h2>
+    <p><div class="inputBox">
+       
+        
+    </div></p>
+    
+    <ul>( ) Allocated <br>  ( ) In Stock <br> ( ) Scrap</ul>
+    <p><div class="inputBox">
+        <span>* Allocated To : </span>
+        <input type="text" required="required">
+    </div></p>
+<div class="container">
+  
+        <button type="submit" class="btn" onclick="openpopup()"> submit</button>
+    <div class="popup" id="popup">
+        <img src="check1.jpg">
+        <h2>Thank You</h2>
+        <p>Your details has been successfully submitted. Thanks!</p>
+        <button type="button" onclick="closepopup()">ok </button>
+
+    </div>
+</div>
+<script>
+    let popup=document.getElementById("popup");
+    function openpopup(){
+    popup.classList.add("open-popup");
+    }
+    function closepopup(){
+    popup.classList.remove("open-popup");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pending Sellers List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Not Approved Persons</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="personList">
+        <!-- Person rows will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    var personData = {
+      'john_doe': {
+        'firstName': 'John',
+        'lastName': 'Doe',
+        'status': 'Pending'
+      },
+      'jane_smith': {
+        'firstName': 'Jane',
+        'lastName': 'Smith',
+        'status': 'Pending'
+      },
+      // ... (other person data)
+    };
+
+    function shuffle(array) {
+      var currentIndex = array.length;
+      var temporaryValue, randomIndex;
+
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
+    function generatePersonRows() {
+      var personList = document.getElementById('personList');
+      personList.innerHTML = '';
+
+      var persons = Object.keys(personData);
+      persons = shuffle(persons);
+
+      for (var i = 0; i < persons.length; i++) {
+        var person = persons[i];
+        var details = personData[person];
+        var row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${details.firstName}</td>
+          <td>${details.lastName}</td>
+          <td>
+            <span id="status_${person}" class="badge ${details.status === 'Pending' ? 'badge-warning' : 'badge-success'}">${details.status}</span>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" onclick="viewDetails('${person}')">View Details</button>
+          </td>
+        `;
+        personList.appendChild(row);
+      }
+    }
+
+    function viewDetails(person) {
+      var url = 'PersonDetails.html?person=' + encodeURIComponent(person);
+      window.open(url, '_blank');
+    }
+
+    function updateStatus(person, status) {
+      var statusElement = document.getElementById('status_' + person);
+      statusElement.innerText = status;
+      statusElement.classList.remove('badge-warning');
+      statusElement.classList.add('badge-success');
+    }
+
+    // Generate person rows on page load
+    generatePersonRows();
+  </script>
+</body>
+
+</html>

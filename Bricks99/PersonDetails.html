@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Person Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Person Details</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Seller ID</th>
+              <td id="sellerId"></td>
+            </tr>
+            <tr>
+              <th>Seller Name</th>
+              <td id="SellerName"></td>
+            </tr>
+            <tr>
+              <th>Area</th>
+              <td id="area"></td>
+            </tr>
+            <tr>
+              <th>Location</th>
+              <td id="location"></td>
+            </tr>
+            <tr>
+              <th>Pincode</th>
+              <td id="pincode"></td>
+            </tr>
+            <tr>
+              <th>MobileNumber</th>
+              <td id="mobileNumber"></td>
+            </tr>
+            <!-- ... (other details) -->
+          </tbody>
+        </table>
+        <button id="approveButton" class="btn btn-success" onclick="approvePerson()">Approve</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    function getQueryParameter(name) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function populatePersonDetails() {
+      var sellerIdElement = document.getElementById('sellerId');
+      var sellerNameElement = document.getElementById('SellerName');
+      var areaElement = document.getElementById('area');
+      // ... (other detail elements)
+
+      var person = getQueryParameter('person');
+      var firstName = getQueryParameter('firstName');
+      var lastName = getQueryParameter('lastName');
+      var status = getQueryParameter('status');
+
+      sellerIdElement.innerText = person;
+      sellerNameElement.innerText = firstName + ' ' + lastName;
+      // ... (populate other details)
+
+      if (status === 'Approved') {
+        var approveButton = document.getElementById('approveButton');
+        approveButton.innerText = 'Approved';
+        approveButton.disabled = true;
+      }
+    }
+
+    function approvePerson() {
+      var person = getQueryParameter('person');
+
+      // Add your logic here to perform the approval action
+
+      // Update the status in the Pending Sellers List
+      window.opener.updateStatus(person, 'Approved');
+
+      alert('Person approved!');
+      window.close();
+    }
+
+    populatePersonDetails();
+  </script>
+</body>
+
+</html>

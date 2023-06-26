@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Approved Sellers List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Approved Sellers List</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SellerId</th>
+                    <th>SellerName</th>
+                </tr>
+            </thead>
+            <tbody id="approvedPersonList">
+                <!-- Approved person rows will be dynamically generated here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        var personData = {
+            'john_doe': {
+                'SellerId': '1',
+                'SellerName': 'KishanReddy',
+                'Area': 'Kukatpally',
+                'Location': 'BJP Office',
+                'Pincode': '500055',
+                'MobileNumber': '1234567890',
+
+                'status': 'Approved'
+            },
+            'jane_smith': {
+                'firstName': 'Jane',
+                'lastName': 'Smith',
+                'status': 'Approved'
+            },
+            'borra_Madhuri': {
+                'firstName': 'Borra',
+                'lastName': 'Madhuri',
+                'status': 'Approved'
+            },
+            'mulakala_Venkatesh': {
+                'firstName': 'Mulakala',
+                'lastName': 'Venkatesh',
+                'status': 'Approved'
+            },
+            'borra_Madhuri': {
+                'firstName': 'Borra',
+                'lastName': 'Madhuri',
+                'status': 'Approved'
+            },
+            'borra_Madhuri': {
+                'firstName': 'Borra',
+                'lastName': 'Madhuri',
+                'status': 'Approved'
+            },
+            // ... (other approved person data)
+        };
+
+        function generateApprovedPersonRows() {
+            var approvedPersonList = document.getElementById('approvedPersonList');
+            approvedPersonList.innerHTML = '';
+
+            var persons = Object.keys(personData);
+
+            for (var i = 0; i < persons.length; i++) {
+                var person = persons[i];
+                var details = personData[person];
+ 
+                var row = document.createElement('tr');
+                row.innerHTML = `
+          <td>${i + 1}</td>          
+          <td>${details.SellerName}</td>          
+          <td>
+            <button type="button" class="btn btn-primary" onclick="viewDetails('${person}')">View Details</button>
+          </td>
+        `;
+                approvedPersonList.appendChild(row);
+            }
+        }
+
+        function viewDetails(person) {
+            var details = personData[person];
+            var url = `PersonDetails.html?firstName=${encodeURIComponent(details.firstName)}&lastName=${encodeURIComponent(details.lastName)}&status=${encodeURIComponent(details.status)}`;
+            window.open(url, '_blank');
+        }
+
+        // Generate approved person rows on page load
+        generateApprovedPersonRows();
+    </script>
+</body>
+
+</html>
